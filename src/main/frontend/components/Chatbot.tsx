@@ -1,9 +1,19 @@
 import { useState } from "react";
 import { ChatbotService } from "Frontend/generated/endpoints";
 
-export default function Chatbot() {
+// Define the types for chat message
+interface ChatMessage {
+    sender: string;
+    text: string;
+}
+
+interface ChatbotProps {
+    setChatHistory: React.Dispatch<React.SetStateAction<ChatMessage[]>>;
+    chatHistory: ChatMessage[];
+}
+
+export default function Chatbot({ setChatHistory, chatHistory }: ChatbotProps) {
     const [message, setMessage] = useState("");
-    const [chatHistory, setChatHistory] = useState<{ sender: string; text: string }[]>([]);
 
     const sendMessage = async () => {
         if (!message.trim()) return;
@@ -35,8 +45,11 @@ export default function Chatbot() {
     return (
         <div style={styles.container}>
             <div style={styles.chatWindow}>
-                {chatHistory.map((chat, index) => (
-                    <div key={index} style={chat.sender === "You" ? styles.userMessage : styles.botMessage}>
+                {chatHistory.map((chat: ChatMessage, index: number) => (
+                    <div
+                        key={index}
+                        style={chat.sender === "You" ? styles.userMessage : styles.botMessage}
+                    >
                         <strong>{chat.sender}:</strong> {chat.text}
                     </div>
                 ))}
@@ -62,47 +75,47 @@ const styles = {
     container: {
         display: "flex",
         flexDirection: "column",
-        width: "600px", // Increased width
-        margin: "auto",
-        border: "1px solid #ccc",
+        flex: 1, // This allows the chatbot to take remaining space
+        padding: "20px",
+        backgroundColor: "#fff",
         borderRadius: "10px",
-        padding: "20px", // Increased padding
+        border: "1px solid #ccc",
     },
     chatWindow: {
         height: "500px", // Increased height
         overflowY: "auto",
-        padding: "20px", // Increased padding
+        padding: "20px",
         borderBottom: "1px solid #ccc",
     },
     userMessage: {
         textAlign: "right",
         color: "blue",
-        margin: "10px 0", // Increased margin
+        margin: "10px 0",
     },
     botMessage: {
         textAlign: "left",
         color: "green",
-        margin: "10px 0", // Increased margin
+        margin: "10px 0",
     },
     inputContainer: {
         display: "flex",
-        marginTop: "20px", // Increased margin
+        marginTop: "20px",
     },
     input: {
         flex: 1,
-        padding: "12px", // Increased padding
+        padding: "12px",
         borderRadius: "5px",
         border: "1px solid #ccc",
-        fontSize: "16px", // Larger font
+        fontSize: "16px",
     },
     button: {
-        marginLeft: "10px", // Increased margin
-        padding: "12px 20px", // Increased padding
+        marginLeft: "10px",
+        padding: "12px 20px",
         background: "blue",
         color: "white",
         border: "none",
         borderRadius: "5px",
         cursor: "pointer",
-        fontSize: "16px", // Larger font
+        fontSize: "16px",
     },
 };
