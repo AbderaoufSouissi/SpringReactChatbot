@@ -30,7 +30,7 @@ const styles = {
         backgroundColor: "#f4f4f4", // Light gray background
         borderRadius: "10px",
         border: "1px solid #ccc",
-        height: "100%", // Ensure it stretches full height
+        height: "94%", // Ensure it stretches full height
         marginRight: "20px", // Add some space between sidebar and chatbot
     },
     title: {
