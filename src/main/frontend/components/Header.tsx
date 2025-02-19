@@ -15,12 +15,11 @@ const styles = {
     header: {
         width: "100%",
         padding: "10px",
-        backgroundColor: "#89CFF0",
+        backgroundColor: "#F5F5F5", // Light gray background
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        borderBottom: "2px solid #00bfff",
-        // Removed `position: "fixed"` so it scrolls naturally
+        borderBottom: "2px solid #D3D3D3", // Soft gray border
     },
     logo: {
         width: "100px",
@@ -31,12 +30,11 @@ const styles = {
     },
     title: {
         fontSize: "36px",
-        color: "#ffffff",
-        fontWeight: "600",
-        letterSpacing: "1px",
+        color: "#333333", // Dark gray for contrast
+        fontWeight: "700",
+        letterSpacing: "1.5px",
         textTransform: "uppercase",
-        fontFamily: "'Roboto', sans-serif",
-        textShadow: "2px 2px 4px rgba(0, 0, 0, 0.1)",
+        fontFamily: "'Montserrat', sans-serif",
         margin: 0,
     },
 };

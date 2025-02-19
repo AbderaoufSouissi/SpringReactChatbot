@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChatbotService } from "Frontend/generated/endpoints";
 
 // Define the types for chat message
@@ -14,12 +14,28 @@ interface ChatbotProps {
 
 export default function Chatbot({ setChatHistory, chatHistory }: ChatbotProps) {
     const [message, setMessage] = useState("");
+    const [isGreetingVisible, setIsGreetingVisible] = useState(true); // State to control greeting visibility
+
+    useEffect(() => {
+        // Initialize chat with greeting message if it's the first render
+        if (isGreetingVisible) {
+            setChatHistory((prev) => [
+                ...prev,
+                { sender: "Bot", text: "Hi, I'm Cortex. How can I help you today ?" },
+            ]);
+        }
+    }, [isGreetingVisible, setChatHistory]);
 
     const sendMessage = async () => {
         if (!message.trim()) return;
 
         // Add user message to chat
         setChatHistory((prev) => [...prev, { sender: "You", text: message }]);
+
+        // Hide greeting message after the user sends the first message
+        if (isGreetingVisible) {
+            setIsGreetingVisible(false);
+        }
 
         try {
             // Ensure response is explicitly typed as a string
