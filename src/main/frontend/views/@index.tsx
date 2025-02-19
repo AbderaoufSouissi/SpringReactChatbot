@@ -1,8 +1,8 @@
-// @index.tsx
 import React, { useState } from "react";
 import Header from "Frontend/components/Header";
 import Sidebar from "Frontend/components/Sidebar";
 import Chatbot from "Frontend/components/Chatbot";
+import NewChatButton from "Frontend/components/NewChatButton"; // Import the new button
 
 export default function HomeView() {
     const [chatHistory, setChatHistory] = useState<{ sender: string; text: string }[]>([]);
@@ -14,11 +14,12 @@ export default function HomeView() {
                 <Sidebar chatHistory={chatHistory} />
                 <Chatbot setChatHistory={setChatHistory} chatHistory={chatHistory} />
             </div>
+            <NewChatButton /> {/* New chat button */}
         </div>
     );
 }
 
-// Enhanced styles with a modern gradient, glassmorphism effect, and new font
+// Adjusted styles to move everything up
 const styles = {
     container: {
         display: "flex",
@@ -26,20 +27,19 @@ const styles = {
         alignItems: "center",
         width: "100%",
         height: "100vh",
-        padding: "20px",
-        background: "linear-gradient(135deg, #1e90ff, #00bfff, #87cefa)", // Deeper blue gradient, representing chatbot style
-        fontFamily: "'Roboto', sans-serif", // Modern, legible font
+        background: "linear-gradient(135deg, #89CFF0, #B0E0E6, #E0FFFF)",
+        fontFamily: "'Poppins', sans-serif",
     },
     mainContent: {
         display: "flex",
         width: "90%",
-        height: "80%",
-        marginTop: "20px",
+        height: "75%",
+        marginTop: "10px",
         borderRadius: "15px",
-        background: "rgba(255, 255, 255, 0.3)", // Lighter glass effect
-        backdropFilter: "blur(15px)", // Frosted glass effect
-        boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)", // Depth effect
-        padding: "20px",
+        background: "rgba(255, 255, 255, 0.2)",
+        backdropFilter: "blur(15px)",
+        boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
+        padding: "15px",
         transition: "transform 0.3s ease-in-out",
     },
 };
