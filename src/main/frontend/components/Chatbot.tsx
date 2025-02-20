@@ -105,12 +105,12 @@ const styles = {
     },
     userMessage: {
         textAlign: "right",
-        color: "blue",
+        color: "black", // Change user message color to black
         margin: "10px 0",
     },
     botMessage: {
         textAlign: "left",
-        color: "green",
+        color: "black", // Change bot message color to black
         margin: "10px 0",
     },
     inputContainer: {
@@ -135,3 +135,4 @@ const styles = {
         fontSize: "16px",
     },
 };
+

@@ -23,6 +23,7 @@ export default function HomeView() {
 
 const styles = {
     container: {
+        position: "fixed",
         display: "flex",
         flexDirection: "column",
         width: "100%",

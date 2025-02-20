@@ -21,7 +21,7 @@ const styles = {
         padding: "10px 15px",
         fontSize: "16px",
         fontWeight: "bold",
-        backgroundColor: "#0078D7", // A chatbot-style blue
+        backgroundColor: "blue", // A chatbot-style blue
         color: "white",
         border: "none",
         borderRadius: "8px",
